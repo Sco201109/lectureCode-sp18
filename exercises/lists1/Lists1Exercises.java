@@ -3,17 +3,47 @@ public class Lists1Exercises {
       * each element incremented by x. L is not allowed
       * to change. */
     public static IntList incrList(IntList L, int x) {
-        /* Your code here. */
+        if (L == null){
         return L;        
+    }
+        IntList incr = new IntList(L.first + x, incrList(L.rest, x));
+        return incr;      
     }
 
     /** Returns an IntList identical to L, but with
       * each element incremented by x. Not allowed to use
       * the 'new' keyword. */
     public static IntList dincrList(IntList L, int x) {
-        /* Your code here. */
+        if (L == null) {
+            return L;
+        }
+        L.first += x;
+        dincrList(L.rest, x);
         return L;
     }
+
+    
+    public int size(){
+        if (rest == null){
+            return 1;
+        }
+        return 1 + this.rest.size();
+
+    public int iterativeSize(){
+        IntList p = this;
+        int Sum = 0;
+        while(p != null){
+            Sum += 1;
+            p = p.rest;
+        }
+        return Sum;
+    }
+        
+    public int get(int i){
+        if(i ==0){
+        return first;
+    }
+        return rest.get(i-1);
 
     public static void main(String[] args) {
         IntList L = new IntList(5, null);
